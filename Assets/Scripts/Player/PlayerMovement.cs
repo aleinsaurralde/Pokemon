@@ -1,29 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private int speed;
-    void Update()
+    public float speed = 5f;
+
+    private Rigidbody rb;
+
+    void Start()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position -= Vector3.forward * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position -= Vector3.right * speed * Time.deltaTime;
-        }
+        rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+    }
 
+    public void HandleUpdate()
+    {
+        float moveX = Input.GetAxis("Horizontal"); // A/D o flechas
+        float moveZ = Input.GetAxis("Vertical");   // W/S o flechas
 
+        Vector3 move = new Vector3(moveX, 0, moveZ).normalized;
+
+        rb.velocity = new Vector3(move.x * speed, rb.velocity.y, move.z * speed);
     }
 }
