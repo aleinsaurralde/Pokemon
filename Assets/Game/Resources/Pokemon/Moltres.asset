@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 375c1234e956aa44db3f3e33a9368ca2, type: 3}
-  m_Name: Ryhorn
+  m_Name: Moltres
   m_EditorClassIdentifier: 
-  name: Ryhorn
-  frontSprite: {fileID: 21300000, guid: 6c89029d222b18f4e8cb2ba194931e84, type: 3}
-  backSprite: {fileID: 21300000, guid: 10d39077caa9e6645bbff8d4a13e8733, type: 3}
-  type1: 13
-  type2: 9
-  maxHp: 80
-  attack: 85
-  defense: 95
-  spAttack: 30
-  spDefense: 30
-  speed: 25
+  name: Moltres
+  frontSprite: {fileID: 21300000, guid: 275a767c93708424086855524b298b85, type: 3}
+  backSprite: {fileID: 21300000, guid: ff6d4a227ee998e44926683e786a02f9, type: 3}
+  type1: 2
+  type2: 10
+  maxHp: 90
+  attack: 100
+  defense: 90
+  spAttack: 125
+  spDefense: 85
+  speed: 90
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 89b5de1d50158f54199af9d542e2326c, type: 2}
     level: 1

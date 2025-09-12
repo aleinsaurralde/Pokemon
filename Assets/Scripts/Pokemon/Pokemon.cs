@@ -5,20 +5,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[System.Serializable]
 public class Pokemon
 {
-    public PokemonBase Base {get; set;}
+   [SerializeField] PokemonBase _base;
+   [SerializeField] int level;
+    public PokemonBase Base {  get { return _base; } }
 
-    public int Level;
+    public int Level { get { return level; } }
 
     public int HP { get; set; }
 
     public List<Move> Moves { get; set; }
 
-    public Pokemon(PokemonBase pBase, int pLevel)
+    public void Init()
     {
-        Base = pBase;
-        Level = pLevel;
         HP = MaxHp;
 
         //Generate Moves
@@ -62,9 +63,15 @@ public class Pokemon
 
     public DamageDetails TakeDamage(Move move, Pokemon attacker)
     {
+        float stab = 1f;
         float critical = 1f;
+        
         if (Random.value * 100f <= 6.25f)
             critical = 2f;
+       
+        if (move.Base.Type == attacker.Base.Type1 || move.Base.Type == attacker.Base.Type2)
+
+            stab = 1.5f;
 
         float type = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type1) * TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type2);
 
@@ -75,9 +82,12 @@ public class Pokemon
             Fainted = false,
         };
 
-        float modifiers = Random.Range(0.85f, 1f) * type * critical;
+        float attack = (move.Base.IsSpecial) ? attacker.SpAttack : attacker.Attack;
+        float defense = (move.Base.IsSpecial) ? SpDefense : Defense;
+
+        float modifiers = Random.Range(0.85f, 1f) * type * critical * stab;
         float a = (2 * attacker.Level + 10) / 250f;
-        float d = a * move.Base.Power * ((float) attacker.Attack / Defense) + 2;
+        float d = a * move.Base.Power * ((float) attack / defense) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
         HP -= damage;

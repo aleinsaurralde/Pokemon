@@ -8,12 +8,12 @@ public class RandomEncounter : MonoBehaviour
 {
     public LayerMask playerLayer;
     private bool canCheck = true;
-    public float encounterCooldown = 0.25f;
+    public float encounterCooldown = 0f;
 
     public event Action OnEncounter;
     private void CheckForEncounters()
     {
-        if (Random.Range(1, 101) <= 10)
+        if (Random.Range(1, 101) <= 100)
         {
             OnEncounter();
         }

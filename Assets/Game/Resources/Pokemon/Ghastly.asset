@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 375c1234e956aa44db3f3e33a9368ca2, type: 3}
-  m_Name: Ryhorn
+  m_Name: Ghastly
   m_EditorClassIdentifier: 
-  name: Ryhorn
-  frontSprite: {fileID: 21300000, guid: 6c89029d222b18f4e8cb2ba194931e84, type: 3}
-  backSprite: {fileID: 21300000, guid: 10d39077caa9e6645bbff8d4a13e8733, type: 3}
-  type1: 13
-  type2: 9
-  maxHp: 80
-  attack: 85
-  defense: 95
-  spAttack: 30
-  spDefense: 30
-  speed: 25
+  name: Ghastly
+  frontSprite: {fileID: 21300000, guid: a31b60878d1a624418b138e9f1dccc24, type: 3}
+  backSprite: {fileID: 21300000, guid: cec40e67440236d44820dde5d9d26599, type: 3}
+  type1: 14
+  type2: 8
+  maxHp: 30
+  attack: 35
+  defense: 30
+  spAttack: 100
+  spDefense: 35
+  speed: 80
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: 89b5de1d50158f54199af9d542e2326c, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2217fe7664012ad4b82b558ac0094491, type: 2}
     level: 1

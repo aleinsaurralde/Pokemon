@@ -19,15 +19,19 @@ public class BattleSystem : MonoBehaviour
     int currentAction;
     int currentMove;
 
-    public void StartBattle()
+    PokemonParty playerParty;
+    Pokemon wildPokemon;
+    public void StartBattle(PokemonParty playerParty, Pokemon wildPokemon)
     {
+        this.playerParty = playerParty;
+        this.wildPokemon = wildPokemon;
         StartCoroutine (SetupBattle());
     }
 
     public IEnumerator SetupBattle()
     {
-        playerUnit.Setup();
-        enemyUnit.Setup();
+        playerUnit.Setup(playerParty.GetHealthyPokemon());
+        enemyUnit.Setup(wildPokemon);
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
 
@@ -59,6 +63,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.Busy;
 
         var move = playerUnit.Pokemon.Moves[currentMove];
+        move.PP--;
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
 
         playerUnit.PlayAttackAnimation();
@@ -89,6 +94,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.EnemyMove;
         var move = enemyUnit.Pokemon.GetRandomMove();
+        move.PP--;
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.Name}");
 
         enemyUnit.PlayAttackAnimation();
@@ -106,7 +112,23 @@ public class BattleSystem : MonoBehaviour
             playerUnit.PlayFaintAnimation();
 
             yield return new WaitForSeconds(2f);
-            OnBattleOver(false);
+
+            var nextPokemon = playerParty.GetHealthyPokemon();
+            if (nextPokemon != null) 
+            {
+                playerUnit.Setup(nextPokemon);
+                playerHud.SetData(nextPokemon);
+
+                dialogBox.SetMoveNames(nextPokemon.Moves);
+
+                yield return (dialogBox.TypeDialog($"Go {nextPokemon.Base.Name}"));
+
+                PlayerAction();
+            }
+            else
+            {
+                OnBattleOver(false);
+            }
         }
         else
         {
@@ -117,13 +139,22 @@ public class BattleSystem : MonoBehaviour
     IEnumerator ShowDamageDetails (DamageDetails damageDetails)
     {
         if (damageDetails.Critical > 1f)
-            yield return dialogBox.TypeDialog("A critical hit!");
+            yield return dialogBox.TypeDialog("A critical hit!"); //crit
 
-        if (damageDetails.TypeEffectiveness > 1)
-            yield return dialogBox.TypeDialog("It's super effective!");
+        else if (damageDetails.TypeEffectiveness > 1 && damageDetails.TypeEffectiveness < 4)
+            yield return dialogBox.TypeDialog("It's super effective!"); //x2 weak
 
-        else if (damageDetails.TypeEffectiveness < 1)
-            yield return dialogBox.TypeDialog("It's not very effective...");
+        else if (damageDetails.TypeEffectiveness >= 4)
+            yield return dialogBox.TypeDialog("It's ultra mega duper effective!"); //x4 weak
+
+        else if (damageDetails.TypeEffectiveness < 1 && damageDetails.TypeEffectiveness > 0.25)
+            yield return dialogBox.TypeDialog("It's not very effective..."); //resistant
+
+        else if (damageDetails.TypeEffectiveness <= 0.25 && damageDetails.TypeEffectiveness > 0)
+            yield return dialogBox.TypeDialog("It's almost ineffective..."); //4x resistant
+
+        else if (damageDetails.TypeEffectiveness <= 0)
+            yield return dialogBox.TypeDialog("Seems unnaffected..."); //immune
     }
 
     public void HandleUpdate()
