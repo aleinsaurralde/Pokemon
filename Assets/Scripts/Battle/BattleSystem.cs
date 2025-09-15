@@ -227,20 +227,24 @@ public class BattleSystem : MonoBehaviour
         if (damageDetails.Critical > 1f)
             yield return dialogBox.TypeDialog("A critical hit!"); //crit
 
-        else if (damageDetails.TypeEffectiveness > 1 && damageDetails.TypeEffectiveness < 4)
-            yield return dialogBox.TypeDialog("It's super effective!"); //x2 weak
-
-        else if (damageDetails.TypeEffectiveness >= 4)
-            yield return dialogBox.TypeDialog("It's ultra mega duper effective!"); //x4 weak
-
-        else if (damageDetails.TypeEffectiveness < 1 && damageDetails.TypeEffectiveness > 0.25)
-            yield return dialogBox.TypeDialog("It's not very effective..."); //resistant
-
-        else if (damageDetails.TypeEffectiveness <= 0.25 && damageDetails.TypeEffectiveness > 0)
-            yield return dialogBox.TypeDialog("It's almost ineffective..."); //4x resistant
-
-        else if (damageDetails.TypeEffectiveness <= 0)
-            yield return dialogBox.TypeDialog("Seems unnaffected..."); //immune
+        switch (damageDetails.TypeEffectiveness)
+        {
+            case > 1 and < 4:
+                yield return dialogBox.TypeDialog("It's super effective!"); //x2 weak
+                break;
+            case >= 4:
+                    yield return dialogBox.TypeDialog("It's ultra mega duper effective!"); //x4 weak
+                break;
+            case < 1 and  > 0.25f:
+                    yield return dialogBox.TypeDialog("It's not very effective..."); //resistant
+                break;
+            case <= 0.25f and  > 0:
+                    yield return dialogBox.TypeDialog("It's almost ineffective..."); //4x resistant
+                break;
+            case <= 0:
+                    yield return dialogBox.TypeDialog("Seems unnaffected..."); //immune
+                break;
+        }
     }
 
     public void HandleUpdate()

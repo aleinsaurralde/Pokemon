@@ -41,14 +41,18 @@ public class BattleHud : MonoBehaviour
 
     public void AnimateHPChangeUI()
     {
-        if (_pokemon.HpChanged)
+        if (hpBar != null )
         {
-            StartCoroutine(UpdateHPUI());
-            if (maxHp != null)
+            if (_pokemon.HpChanged)
             {
-                StartCoroutine(UpdateHPNumberUI()); 
-                _pokemon.HpChanged = false;
+                StartCoroutine(UpdateHPUI());
+                if (maxHp != null)
+                {
+                    StartCoroutine(UpdateHPNumberUI());
+                    _pokemon.HpChanged = false;
+                }
             }
         }
+
     }
 }

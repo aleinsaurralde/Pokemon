@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2724,7 +2724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemons:
-  - _base: {fileID: 11400000, guid: f9e0bcc07d2153147b772ee1cc8357a6, type: 2}
+  - _base: {fileID: 11400000, guid: 87dbef9822f44f947927394cc26386d5, type: 2}
     level: 5
 --- !u!4 &635624071
 Transform:
@@ -8635,9 +8635,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemons:
-  - _base: {fileID: 11400000, guid: eaedc9900a2f95a4f9d9945cbf05bb4a, type: 2}
-    level: 7
   - _base: {fileID: 11400000, guid: 94a3159f81d433843b7f42fe0880406a, type: 2}
+    level: 7
+  - _base: {fileID: 11400000, guid: eaedc9900a2f95a4f9d9945cbf05bb4a, type: 2}
     level: 3
   - _base: {fileID: 11400000, guid: f9e0bcc07d2153147b772ee1cc8357a6, type: 2}
     level: 7
