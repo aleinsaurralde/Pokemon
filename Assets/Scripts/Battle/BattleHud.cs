@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class BattleHud : MonoBehaviour
 {
@@ -25,25 +26,29 @@ public class BattleHud : MonoBehaviour
         {
             maxHp.text = $"{pokemon.MaxHp}";
         }
-        StartCoroutine(hpBar.UpdateHealthNumber(pokemon.HP));
+        StartCoroutine(hpBar.UpdateHealthUINumber(pokemon.HP));
     }
 
-    public IEnumerator UpdateHP()
+    public IEnumerator UpdateHPUI()
     {
         yield return hpBar.SetHPSmooth((float)_pokemon.HP / _pokemon.MaxHp);
 
     }
-    public IEnumerator UpdateHPNumber()
+    public IEnumerator UpdateHPNumberUI()
     {
-        yield return hpBar.UpdateHealthNumber(_pokemon.HP);
+        yield return hpBar.UpdateHealthUINumber(_pokemon.HP);
     }
 
-    public void AnimateHPChange()
+    public void AnimateHPChangeUI()
     {
-        StartCoroutine(UpdateHP());
-        if (maxHp != null)
+        if (_pokemon.HpChanged)
         {
-            StartCoroutine(UpdateHPNumber());
+            StartCoroutine(UpdateHPUI());
+            if (maxHp != null)
+            {
+                StartCoroutine(UpdateHPNumberUI()); 
+                _pokemon.HpChanged = false;
+            }
         }
     }
 }

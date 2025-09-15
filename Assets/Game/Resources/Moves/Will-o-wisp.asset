@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31d948ccb62a1b74f8fd0b469c7b8929, type: 3}
-  m_Name: Water Gun
+  m_Name: Will-o-wisp
   m_EditorClassIdentifier: 
-  name: Water Gun
+  name: Will-o-wisp
   description: 
-  type: 3
-  power: 40
+  type: 2
+  power: 0
   accuracy: 100
-  pp: 25
-  category: 1
+  pp: 15
+  category: 2
   effects:
     boosts: []
+    status: 2
   target: 0

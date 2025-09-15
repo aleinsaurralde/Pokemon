@@ -81,3 +81,4 @@ public class BattleUnit : MonoBehaviour
         sequence.Join(image.DOFade(0f, 0.5f));
     }
 }
+

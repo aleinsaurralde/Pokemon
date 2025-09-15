@@ -29,7 +29,7 @@ public class HPBar : MonoBehaviour
         }
         SetHP(newHp);
     }
-    public IEnumerator UpdateHealthNumber(int targetHp)
+    public IEnumerator UpdateHealthUINumber(int targetHp)
     {
         int startHp = displayedHP;
         float t = 0f;
