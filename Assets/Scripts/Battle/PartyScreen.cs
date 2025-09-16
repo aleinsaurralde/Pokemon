@@ -32,13 +32,30 @@ public class PartyScreen : MonoBehaviour
     {
         for (int i = 0; i < pokemons.Count; i++) 
         {
-            if (i == selectedMember)
-                memberSlots[i].SetSelected(true);
+            if (i == selectedMember) //when member is selected, highlight image
+            {
+                if (pokemons[i].HP > 0)
+                {
+                    memberSlots[i].SetBGImage(true, false); // selected and not fainted
+                }
+                else
+                {
+                    memberSlots[i].SetBGImage(true, true); //selected and fainted
+                }
+            } // for unselected members
             else
-                memberSlots[i].SetSelected(false);
+            {
+                if (pokemons[i].HP > 0)
+                {
+                    memberSlots[i].SetBGImage(false, false); //unselected, not fainted
+                }
+                else
+                {
+                    memberSlots[i].SetBGImage(false,true); //unselected, fainted
+                }
+            }
         }
     }
-
     public void SetMessageText(string message)
     {
         messageText.text = message;

@@ -13,6 +13,10 @@ public class GameController : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera worldCamera;
     GameState state;
 
+    private void Awake()
+    {
+        ConditionsDB.Init();
+    }
     private void Start()
     {
         randomEncounter.OnEncounter += StartBattle;

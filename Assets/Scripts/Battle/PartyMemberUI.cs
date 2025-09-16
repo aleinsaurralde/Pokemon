@@ -16,6 +16,19 @@ public class PartyMemberUI : MonoBehaviour
     [SerializeField] Image backgroundImage;
     [SerializeField] Sprite unselectedImage;
     [SerializeField] Sprite highlightedImage;
+    [SerializeField] Sprite unselectedFaintedImage;
+    [SerializeField] Sprite highlightedFaintedImage;
+
+    [SerializeField] Image statusArea;
+
+    [SerializeField] Sprite psnImage;
+    [SerializeField] Sprite slpImage;
+    [SerializeField] Sprite parImage;
+    [SerializeField] Sprite frzImage;
+    [SerializeField] Sprite brnImage;
+    [SerializeField] Sprite fntImage;
+
+    Dictionary<ConditionID, Sprite> statusImage;
 
     Pokemon _pokemon;
 
@@ -28,13 +41,50 @@ public class PartyMemberUI : MonoBehaviour
         pokemonSprite.sprite = pokemon.Base.FrontSprite;
         maxHp.text = $"{pokemon.MaxHp}";
         currentHp.text = $"{pokemon.HP}";
+
+        statusImage = new Dictionary<ConditionID, Sprite>()
+        {
+            { ConditionID.psn, psnImage },
+            { ConditionID.slp, slpImage },
+            { ConditionID.brn, brnImage },
+            { ConditionID.frz, frzImage },
+            { ConditionID.par, parImage },
+            { ConditionID.fnt, fntImage },
+        };
+
+        SetStatusImage();
+        _pokemon.OnStatusChanged += SetStatusImage;
+
     }
 
-    public void SetSelected(bool selected)
+    private void SetStatusImage()
     {
-        if (selected) 
-            backgroundImage.sprite = highlightedImage;
+        if (_pokemon.Status == null)
+        {
+            statusArea.gameObject.SetActive(false);
+        }
         else
-            backgroundImage.sprite = unselectedImage;
-    } 
+        {
+            statusArea.gameObject.SetActive(true);
+            statusArea.sprite = statusImage[_pokemon.Status.Id];
+        }
+    }
+    public void SetBGImage(bool selected, bool fainted)
+    {
+        if (!fainted)
+        {
+            if (selected)
+                backgroundImage.sprite = highlightedImage;
+            else
+                backgroundImage.sprite = unselectedImage;
+        }
+        else
+        {
+            if (selected)
+                backgroundImage.sprite = highlightedFaintedImage;
+            else
+                backgroundImage.sprite = unselectedFaintedImage;
+        }
+    }
+   
 }

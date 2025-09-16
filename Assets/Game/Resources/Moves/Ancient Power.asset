@@ -10,24 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31d948ccb62a1b74f8fd0b469c7b8929, type: 3}
-  m_Name: Ember
+  m_Name: Ancient Power
   m_EditorClassIdentifier: 
-  name: Ember
+  name: Ancient Power
   description: 
-  type: 2
-  power: 40
+  type: 13
+  power: 60
   accuracy: 100
   alwaysHit: 0
-  pp: 25
+  pp: 5
   category: 1
   effects:
     boosts: []
     status: 0
     volatileStatus: 0
   secondaries:
-  - boosts: []
-    status: 2
+  - boosts:
+    - stat: 0
+      boost: 1
+    - stat: 1
+      boost: 1
+    - stat: 2
+      boost: 1
+    - stat: 3
+      boost: 1
+    - stat: 4
+      boost: 1
+    status: 0
     volatileStatus: 0
     chance: 10
-    target: 0
+    target: 1
   target: 0

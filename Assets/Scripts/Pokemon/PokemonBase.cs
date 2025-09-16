@@ -150,5 +150,9 @@ public enum Stat
     Defense,
     SpAttack,
     SpDefense,
-    Speed
+    Speed,
+
+    //not actual stats, just for battle changes
+    Accuracy,
+    Evasion,
 }

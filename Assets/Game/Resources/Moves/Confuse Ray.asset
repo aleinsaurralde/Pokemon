@@ -10,24 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31d948ccb62a1b74f8fd0b469c7b8929, type: 3}
-  m_Name: Ember
+  m_Name: Confuse Ray
   m_EditorClassIdentifier: 
-  name: Ember
+  name: Confuse Ray
   description: 
-  type: 2
-  power: 40
+  type: 14
+  power: 0
   accuracy: 100
   alwaysHit: 0
-  pp: 25
-  category: 1
+  pp: 20
+  category: 2
   effects:
     boosts: []
     status: 0
-    volatileStatus: 0
-  secondaries:
-  - boosts: []
-    status: 2
-    volatileStatus: 0
-    chance: 10
-    target: 0
+    volatileStatus: 7
   target: 0
