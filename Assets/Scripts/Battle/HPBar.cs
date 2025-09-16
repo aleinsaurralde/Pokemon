@@ -8,12 +8,31 @@ using UnityEngine.UI;
 public class HPBar : MonoBehaviour
 {
     [SerializeField] GameObject health;
+    [SerializeField] Image healthBar;
+    [SerializeField] Sprite healthyBar;
+    [SerializeField] Sprite yellowBar;
+    [SerializeField] Sprite redBar;
     [SerializeField] TextMeshProUGUI currentHealth;
     private int displayedHP;
+
+    
     public void SetHP (float hpNormalized)
     {
+        
 
         health.transform.localScale = new Vector3(hpNormalized, 1f);
+        if (hpNormalized < 0.66f && hpNormalized > 0.33f)
+        {
+            healthBar.sprite = yellowBar;
+        }
+        else if (hpNormalized < 0.33f)
+        {
+            healthBar.sprite = redBar;
+        }
+        else
+        {
+            healthBar.sprite = healthyBar;
+        }
     }
 
     public IEnumerator SetHPSmooth(float newHp)

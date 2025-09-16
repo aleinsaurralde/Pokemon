@@ -6,6 +6,7 @@ using Cinemachine;
 public enum GameState { FreeRoam, Battle}
 public class GameController : MonoBehaviour
 {
+    public static GameController Instance;
 
     [SerializeField] PlayerMovement playerController;
     [SerializeField] BattleSystem battleSystem;
@@ -15,7 +16,18 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this) 
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         ConditionsDB.Init();
+        DontDestroyOnLoad(gameObject); 
     }
     private void Start()
     {

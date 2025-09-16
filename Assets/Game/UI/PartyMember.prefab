@@ -262,6 +262,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 2510333004763038472}
+  healthBar: {fileID: 2510333004763038474}
+  healthyBar: {fileID: 1182158209, guid: 08e37aad321da4a4f90f8a853e476dd4, type: 3}
+  yellowBar: {fileID: -1433190658, guid: 08e37aad321da4a4f90f8a853e476dd4, type: 3}
+  redBar: {fileID: 640134908, guid: 08e37aad321da4a4f90f8a853e476dd4, type: 3}
   currentHealth: {fileID: 2510333004682200856}
 --- !u!1 &2510333004028712659
 GameObject:
@@ -592,7 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24533378, g: 1, b: 0.22075468, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
