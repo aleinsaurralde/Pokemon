@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -110,10 +111,12 @@ public class Pokemon
             {
                 StatusChanges.Enqueue($"{Base.Name}'s {stat} fell!");
             }
-                Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
+
+            Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
         }
     }
- 
+    
+
     public int Attack
     {
         get { return GetStat(Stat.Attack); }
@@ -204,7 +207,8 @@ public class Pokemon
     }
     public Move GetRandomMove()
     {
-        int r = Random.Range(0, Moves.Count);
+        var movesWithPP = Moves.Where(x => x.PP > 0).ToList();
+        int r = Random.Range(0, movesWithPP.Count);
         return Moves[r];
     }
     public bool OnBeforeMove()

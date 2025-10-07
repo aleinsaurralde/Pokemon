@@ -2003,6 +2003,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 204169431}
+  healthBar: {fileID: 0}
+  healthyBar: {fileID: 0}
+  yellowBar: {fileID: 0}
+  redBar: {fileID: 0}
   currentHealth: {fileID: 1360615740}
 --- !u!222 &419836998
 CanvasRenderer:
@@ -2588,7 +2592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wildPokemons:
   - _base: {fileID: 11400000, guid: 1df3e1def1796014eb23e973f4e50104, type: 2}
-    level: 5
+    level: 50
 --- !u!4 &635624071
 Transform:
   m_ObjectHideFlags: 0
@@ -5437,7 +5441,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 1
+  m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1639056708
 CanvasRenderer:
@@ -7413,6 +7417,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1169799243}
     m_Modifications:
+    - target: {fileID: 2147623827792362001, guid: 3d1f9fceb48dfdd4aa7396ee37f8c87f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147623827792362001, guid: 3d1f9fceb48dfdd4aa7396ee37f8c87f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147623827792362001, guid: 3d1f9fceb48dfdd4aa7396ee37f8c87f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2147623827792362003, guid: 3d1f9fceb48dfdd4aa7396ee37f8c87f, type: 3}
       propertyPath: statusImage
       value: 

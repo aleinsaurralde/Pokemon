@@ -139,6 +139,7 @@ public class ConditionsDB
                         return true;
                     }
                     pokemon.UpdateHP(pokemon.MaxHp / 8);
+                    pokemon.CurrentMove.PP--;
                     pokemon.StatusChanges.Enqueue($"It hurt itself due to it's confusion!");
                     return false; 
                 }

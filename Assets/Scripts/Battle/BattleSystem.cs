@@ -105,10 +105,25 @@ public class BattleSystem : MonoBehaviour
             playerUnit.Pokemon.CurrentMove = playerUnit.Pokemon.Moves[currentMove];
             enemyUnit.Pokemon.CurrentMove = enemyUnit.Pokemon.GetRandomMove();
 
-            //check who goes first
-            bool playerGoesFirst = playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed;
+            int playerMovePriority = playerUnit.Pokemon.CurrentMove.Base.Priority;
+            int enemyMovePriority = enemyUnit.Pokemon.CurrentMove.Base.Priority;
 
-            var firstUnit = (playerGoesFirst) ? playerUnit : enemyUnit;
+            //check who goes first, with priority first then with speed
+
+            bool playerGoesFirst = true;
+
+            if (enemyMovePriority > playerMovePriority)
+            {
+                playerGoesFirst = false;
+            }
+            else if (enemyMovePriority == playerMovePriority)
+            {
+                playerGoesFirst = playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed;
+            }
+                
+
+
+                var firstUnit = (playerGoesFirst) ? playerUnit : enemyUnit;
             var secondUnit = (playerGoesFirst) ? enemyUnit : playerUnit;
 
             var secondPokemon = secondUnit.Pokemon;
@@ -157,7 +172,7 @@ public class BattleSystem : MonoBehaviour
     {
         bool canRunMove = sourceUnit.Pokemon.OnBeforeMove();
         if (!canRunMove)
-        {
+        {            
             yield return ShowStatusChanges(sourceUnit.Pokemon);
             yield return sourceUnit.Hud.AnimateHPChangeUI();
             yield break;
@@ -211,7 +226,6 @@ public class BattleSystem : MonoBehaviour
             }
         }
         
-
         else
         {
             yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.Name}'s attack missed!");
@@ -435,6 +449,9 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            var move = playerUnit.Pokemon.Moves[currentMove];
+            if (move.PP <= 0) return;
+                
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
             StartCoroutine(RunTurns(BattleAction.Move));
