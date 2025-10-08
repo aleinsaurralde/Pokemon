@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
-    [SerializeField] PlayerMovement playerController;
+    [SerializeField] PlayerController playerController;
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] RandomEncounter randomEncounter;
     [SerializeField] CinemachineVirtualCamera worldCamera;
