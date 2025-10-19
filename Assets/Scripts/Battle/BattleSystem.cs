@@ -74,7 +74,6 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetDialog("Choose an action");
         dialogBox.EnableActionSelector(true);
     }
-    //Podria estar en otro codigo (UI)
     private void OpenPartyScreen()
     {
         state = BattleState.PartyScreen;
