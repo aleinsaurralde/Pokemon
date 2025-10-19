@@ -73,8 +73,8 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.ActionSelection;
         dialogBox.SetDialog("Choose an action");
         dialogBox.EnableActionSelector(true);
-        //dialogBox.EnableMoveSelector(false);
     }
+    //Podria estar en otro codigo (UI)
     private void OpenPartyScreen()
     {
         state = BattleState.PartyScreen;
@@ -367,19 +367,17 @@ public class BattleSystem : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (state == BattleState.ActionSelection)
+        switch (state)
         {
-            HandleActionSelection();
-        }
-
-        else if (state == BattleState.MoveSelection)
-        {
-            HandleMoveSelection();
-        }
-
-        else if (state == BattleState.PartyScreen)
-        {
-            HandlePartyScreenSelection();
+            case BattleState.ActionSelection:
+                HandleActionSelection();
+                break;
+            case BattleState.MoveSelection:
+                HandleMoveSelection();
+                break;
+            case BattleState.PartyScreen:
+                HandlePartyScreenSelection();
+                break;
         }
     }
 
@@ -409,26 +407,21 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (currentAction == 0)
+            switch (currentAction)
             {
-                //Fight
-                MoveSelection();
-            }
-            else if (currentAction == 1)
-            {
-                //Bag
-
-            }
-            else if (currentAction == 2)
-            {
-                //Pokemon
-                prevState = state;
-                OpenPartyScreen();
-            }
-            else if (currentAction == 3)
-            {
-                //Run
-
+                case 0:
+                    MoveSelection();
+                    break;
+                case 1:
+                    //Bag
+                    break;
+                case 2:
+                    prevState = state;
+                    OpenPartyScreen();
+                    break;
+                case 3:
+                    //run
+                    break;
             }
         }
     }
@@ -489,6 +482,7 @@ public class BattleSystem : MonoBehaviour
             }
 
             partyScreen.gameObject.SetActive(false);
+
             if (prevState == BattleState.ActionSelection) 
             {
                 prevState = null;

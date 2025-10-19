@@ -9,11 +9,12 @@ public class RandomEncounter : MonoBehaviour
     public LayerMask playerLayer;
     private bool canCheck = true;
     public float encounterCooldown = 0f;
+    [SerializeField] private int encounterChance = 10;
 
     public event Action OnEncounter;
     private void CheckForEncounters()
     {
-        if (Random.Range(1, 101) <= 100)
+        if (Random.Range(1, 101) <= encounterChance)
         {
             OnEncounter();
         }

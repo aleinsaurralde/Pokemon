@@ -34,6 +34,10 @@ public class ConditionsDB
             {
                 Name = "Burn",
                 StartMessage = "has been burned",
+                OnStart = (Pokemon pokemon) =>
+                {
+                    pokemon.ModifyStats(ConditionID.brn);
+                },
                 OnAfterTurn = (Pokemon pokemon) =>
                 {
                     if(pokemon.MaxHp/16 < 1)
@@ -54,6 +58,10 @@ public class ConditionsDB
             {
                 Name = "Paralyzed",
                 StartMessage = "has been paralyzed",
+                OnStart = (Pokemon pokemon) =>
+                {
+                    pokemon.ModifyStats(ConditionID.par);
+                },
                 OnBeforeMove = (Pokemon pokemon) =>
                 {
                     if (Random.Range(1, 5) == 1) 
