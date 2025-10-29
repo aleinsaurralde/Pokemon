@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 'Fucking freezing gun '
   description: 
-  type: 3
+  type: 6
   power: 0
   accuracy: 100
+  alwaysHit: 0
   pp: 25
+  priority: 0
   category: 2
   effects:
     boosts: []
     status: 5
+    volatileStatus: 0
+  secondaries: []
   target: 0
