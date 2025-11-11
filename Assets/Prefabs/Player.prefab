@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1095296075914054650}
   - component: {fileID: 1095296075914054651}
   m_Layer: 3
-  m_Name: Sprite
+  m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095296075914054649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.007, y: 0.48, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,8 +101,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1833820355
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2138610721, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,10 +194,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.34123632
-  m_Height: 0.9912691
+  m_Radius: 0.4700003
+  m_Height: 0.9400006
   m_Direction: 1
-  m_Center: {x: 0.0027257502, y: 0.5019134, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &1095296076430275588
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -251,4 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1051dd0c2b40a4c944fe4374b41716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  moveSpeed: 5
+  gridSize: 1
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 72

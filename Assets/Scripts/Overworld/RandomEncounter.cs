@@ -1,50 +1,53 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class RandomEncounter : MonoBehaviour
 {
     public LayerMask playerLayer;
-    private bool canCheck = true;
-    public float encounterCooldown = 0f;
     [SerializeField] private int encounterChance = 10;
 
+    private bool canCheck = true;
+    private PlayerController playerInside; // referencia al jugador dentro del pasto
+
     public event Action OnEncounter;
-    private void CheckForEncounters()
-    {
-        if (Random.Range(1, 101) <= encounterChance)
-        {
-            OnEncounter();
-        }
 
-
-    }
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if ((playerLayer.value & (1 << other.gameObject.layer)) > 0)
         {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            if (rb != null)
+            playerInside = other.GetComponent<PlayerController>();
+
+            if (playerInside != null)
             {
-                if (rb.velocity.magnitude > 0.1f)
-                {
-                    if (canCheck)
-                    {
-                        CheckForEncounters();
-                        StartCoroutine(EncounterCooldown());
-                    }
-                }
+                playerInside.OnStepFinished += HandlePlayerStep;
             }
         }
     }
 
-    private IEnumerator EncounterCooldown()
+    private void OnTriggerExit(Collider other)
     {
-        canCheck = false;
-        yield return new WaitForSeconds(encounterCooldown);
-        canCheck = true;
+        if ((playerLayer.value & (1 << other.gameObject.layer)) > 0)
+        {
+            var player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.OnStepFinished -= HandlePlayerStep;
+            }
+
+            playerInside = null;
+        }
+    }
+
+    private void HandlePlayerStep()
+    {
+        if (canCheck)
+        {
+            if (Random.Range(1, 101) <= encounterChance)
+            {
+                OnEncounter?.Invoke();
+            }
+        }
     }
 }

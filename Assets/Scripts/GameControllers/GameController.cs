@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private IGameState currentState;
     private FreeRoamState freeRoamState;
     private GameBattleState battleState;
+    private DialogState dialogState;
 
     public BattleSystem BattleSystem => battleSystem;
     public CinemachineVirtualCamera WorldCamera => worldCamera;
@@ -38,10 +39,22 @@ public class GameController : MonoBehaviour
         // Creamos las instancias de los estados
         freeRoamState = new FreeRoamState(this, playerController);
         battleState = new GameBattleState(this, battleSystem, playerController);
+        dialogState = new DialogState();
 
         // Suscribimos eventos
         randomEncounter.OnEncounter += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
+
+        DialogManager.Instance.OnShowDialog += () =>
+        {
+            currentState = dialogState;
+        };
+        DialogManager.Instance.OnCloseDialog += () =>
+        {
+            if(currentState == dialogState)
+                currentState=freeRoamState;
+        };
+        
 
         // Estado inicial
         TransitionToState(freeRoamState);
