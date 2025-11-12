@@ -6,6 +6,7 @@ using System.Resources;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen, BattleOver }
 public enum BattleAction {Move, SwitchPokemon, UseItem, Run }
@@ -18,7 +19,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit enemyUnit;
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] PartyScreen partyScreen;
+    [SerializeField] Image playerImage;
+    [SerializeField] Image trainerImage;
 
+<<<<<<< Updated upstream
     public event Action<bool> OnBattleOver;
 
     BattleState state;
@@ -29,6 +33,36 @@ public class BattleSystem : MonoBehaviour
 
     PokemonParty playerParty;
     Pokemon wildPokemon;
+=======
+    public BattleUnit PlayerUnit => playerUnit;
+    public BattleUnit EnemyUnit => enemyUnit;
+    public Image PlayerImage => playerImage;
+    public Image TrainerImage => trainerImage;
+    public BattleDialogBox DialogBox => dialogBox;
+    public PartyScreen PartyScreen => partyScreen;
+
+
+    public IGameState currentState { get; private set;}
+    public IGameState prevState;
+    public Dictionary<Type, IGameState> states { get; private set; }
+    public event Action<bool> OnBattleOver;
+
+    public int currentAction;
+    public int currentMove;
+    public int currentMember;   
+
+    public PokemonParty playerParty { get; private set; }
+    public PokemonParty trainerParty { get; private set; }
+    public Pokemon wildPokemon { get; private set; }
+>>>>>>> Stashed changes
+
+    private bool isTrainerBattle = false;
+    public bool IsTrainerBattle => isTrainerBattle;
+
+    PlayerController player;
+    TrainerController trainer;
+    public PlayerController Player { get => player; }
+    public TrainerController Trainer { get => trainer; }
 
     private void Awake()
     {
@@ -56,11 +90,31 @@ public class BattleSystem : MonoBehaviour
 
         partyScreen.Init();
 
+<<<<<<< Updated upstream
         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
         yield return (dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared!"));
 
         ActionSelection();
+=======
+    public void StartBattle(PokemonParty PlayerParty, Pokemon WildPokemon)
+    {
+        isTrainerBattle = false;
+        playerParty = PlayerParty;
+        wildPokemon = WildPokemon;
+        ChangeState<StartState>();
+>>>>>>> Stashed changes
+    }
+    public void StartTrainerBattle(PokemonParty PlayerParty, PokemonParty TrainerParty)
+    {
+        playerParty = PlayerParty;
+        trainerParty = TrainerParty;
+
+        isTrainerBattle = true;
+        player = playerParty.GetComponent<PlayerController>();
+        trainer = trainerParty.GetComponent<TrainerController>();
+        
+        ChangeState<StartState>();
     }
     private void BattleOver(bool won)
     {
