@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Cinemachine;
 
@@ -14,6 +15,9 @@ public class GameController : MonoBehaviour
     private FreeRoamState freeRoamState;
     private GameBattleState battleState;
     private DialogState dialogState;
+    //private CutsceneState cutsceneState;
+    private bool canMove = true;
+    public bool CanMove => canMove;
 
     public BattleSystem BattleSystem => battleSystem;
     public CinemachineVirtualCamera WorldCamera => worldCamera;
@@ -44,17 +48,26 @@ public class GameController : MonoBehaviour
         // Suscribimos eventos
         randomEncounter.OnEncounter += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
+        DialogManager.Instance.OnShowDialog += StartDialog;
+        DialogManager.Instance.OnCloseDialog += CloseDialog;
 
-        DialogManager.Instance.OnShowDialog += () =>
+        foreach (var trainer in FindObjectsOfType<TrainerStartBattle>())
         {
-            currentState = dialogState;
-        };
-        DialogManager.Instance.OnCloseDialog += () =>
-        {
-            if(currentState == dialogState)
-                currentState=freeRoamState;
-        };
-        
+            trainer.TriggerTrainerBattle += (trigger) =>
+            {
+                //TransitionToState(cutsceneState);
+                // Buscar el TrainerController en el objeto padre
+                var trainerController = trigger.GetComponentInParent<TrainerController>();
+                if (trainerController != null)
+                {
+                    StartCoroutine(trainerController.TriggerTrainerBattle());
+                }
+                else
+                {
+                    Debug.LogWarning($"No se encontró TrainerController en el padre de {trigger.name}");
+                }
+            };
+        }
 
         // Estado inicial
         TransitionToState(freeRoamState);
@@ -63,6 +76,18 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         currentState?.HandleUpdate();
+    }
+
+    public void StopMovement()
+    {
+        StartCoroutine(MoveCooldown());
+    }
+
+    private IEnumerator MoveCooldown()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(1f);
+        canMove = true;
     }
 
     public void TransitionToState(IGameState newState)
@@ -78,6 +103,14 @@ public class GameController : MonoBehaviour
     }
 
     private void EndBattle(bool won)
+    {
+        TransitionToState(freeRoamState);
+    }
+    private void StartDialog()
+    {
+        TransitionToState(dialogState);
+    }
+    private void CloseDialog()
     {
         TransitionToState(freeRoamState);
     }

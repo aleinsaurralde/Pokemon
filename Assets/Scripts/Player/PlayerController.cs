@@ -29,19 +29,17 @@ public class PlayerController : MonoBehaviour
     //}
     public float moveSpeed = 5f;
     public float gridSize = 1f;
-    public LayerMask obstacleLayer;
-    public LayerMask interactableLayer;
 
     private bool isMoving = false;
     private Vector3 moveDirection;
     private Rigidbody rb;
     public event Action OnStepFinished;
 
-    private Animator animator;
+    private CharacterAnimator animator;
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<CharacterAnimator>();
     }
     void Start()
     {
@@ -51,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (!isMoving)
+        if (!isMoving && GameController.Instance.CanMove)
         {
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveZ = Input.GetAxisRaw("Vertical");
@@ -63,10 +61,10 @@ public class PlayerController : MonoBehaviour
             {
                 moveDirection = new Vector3(moveX, 0, moveZ).normalized;
 
-                animator.SetFloat("moveX", moveX);
-                animator.SetFloat("moveZ", moveZ);
+                animator.MoveX = moveX;
+                animator.MoveZ = moveZ;
 
-                if (!Physics.Raycast(transform.position + Vector3.up * 0.1f, moveDirection, gridSize, obstacleLayer | interactableLayer))
+                if (!Physics.Raycast(transform.position + Vector3.up * 0.1f, moveDirection, gridSize, GameLayers.i.ObstaclesLayer | GameLayers.i.InteractablesLayer))
                 {
                     StartCoroutine(MoveOneTile());
 
@@ -77,7 +75,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        animator.SetBool("isMoving", isMoving);
+
+        animator.IsMoving = isMoving;
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -111,11 +110,11 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        var facingDir = new Vector3(animator.GetFloat("moveX"), 0, animator.GetFloat("moveZ"));
+        var facingDir = new Vector3(animator.MoveX, 0, animator.MoveZ);
         var interactPosition = transform.position + facingDir;
 
-        Collider[] colliders = Physics.OverlapSphere(interactPosition, 0.3f, interactableLayer);
-
+        Collider[] colliders = Physics.OverlapSphere(interactPosition, 0.3f, GameLayers.i.InteractablesLayer);
+            
         if (colliders.Length > 0)
         {
             colliders[0].GetComponent<IInteractable>()?.Interact();

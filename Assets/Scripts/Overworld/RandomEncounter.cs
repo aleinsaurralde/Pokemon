@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 
 public class RandomEncounter : MonoBehaviour
 {
-    public LayerMask playerLayer;
     [SerializeField] private int encounterChance = 10;
 
     private bool canCheck = true;
@@ -15,7 +14,7 @@ public class RandomEncounter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((playerLayer.value & (1 << other.gameObject.layer)) > 0)
+        if ((GameLayers.i.PlayerLayer.value & (1 << other.gameObject.layer)) > 0)
         {
             playerInside = other.GetComponent<PlayerController>();
 
@@ -28,7 +27,7 @@ public class RandomEncounter : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if ((playerLayer.value & (1 << other.gameObject.layer)) > 0)
+        if ((GameLayers.i.PlayerLayer.value & (1 << other.gameObject.layer)) > 0)
         {
             var player = other.GetComponent<PlayerController>();
             if (player != null)

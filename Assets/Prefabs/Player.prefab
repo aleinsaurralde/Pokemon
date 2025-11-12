@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095296075914054650}
   - component: {fileID: 1095296075914054651}
+  - component: {fileID: 8645470381136709015}
   m_Layer: 3
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -115,6 +116,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8645470381136709015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095296075914054649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39565459e4c99214ba7b4362a40dfbad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkDownSprites:
+  - {fileID: 2103844360, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 1101622472, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 2103844360, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -953785618, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkUpSprites:
+  - {fileID: -2138610721, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 1192585293, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -2138610721, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1381362607, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkRightSprites:
+  - {fileID: 752710398, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -10193989, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkLeftSprites:
+  - {fileID: -1060076475, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1331233999, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1060076475, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 974777536, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
 --- !u!1 &1095296076292810086
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   gridSize: 1
-  obstacleMask:
+  obstacleLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 128
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 64
