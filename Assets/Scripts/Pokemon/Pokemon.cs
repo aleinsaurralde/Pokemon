@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine.Editor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -160,6 +161,7 @@ public class Pokemon
             Fainted = false,
         };
 
+
         float attack = (move.Base.Category == MoveCategory.Special) ? attacker.SpAttack : attacker.Attack;
         float defense = (move.Base.Category == MoveCategory.Special) ? SpDefense : Defense;
 
@@ -192,6 +194,7 @@ public class Pokemon
     public void CureStatus()
     {
         Status = null;
+        RestoreStats();
         OnStatusChanged?.Invoke();
     }
     public void SetVolatileStatus(ConditionID conditionId)
@@ -205,6 +208,7 @@ public class Pokemon
     {
         VolatileStatus = null;
     }
+
     public Move GetRandomMove()
     {
         var movesWithPP = Moves.Where(x => x.PP > 0).ToList();
@@ -241,7 +245,31 @@ public class Pokemon
         VolatileStatus = null;
         ResetStatBoost();        
     }
+
+    public void ModifyStats(ConditionID condition)
+    {
+        switch (condition)
+        {
+            case ConditionID.brn:
+                Stats.Remove(Stat.Attack);
+                Stats.Add(Stat.Attack, Mathf.FloorToInt(((Base.Attack * Level) / 100f) + 5) / 2);
+                break;
+            case ConditionID.par:
+                Stats.Remove(Stat.Speed);
+                Stats.Add(Stat.Speed, Mathf.FloorToInt(((Base.Speed * Level) / 100f) + 5) / 2);
+                break;
+        }
+    }
+    public void RestoreStats()
+    {
+        Stats.Remove(Stat.Attack);
+        Stats.Add(Stat.Attack, Mathf.FloorToInt((Base.Attack * Level) / 100f) + 5);
+        Stats.Remove(Stat.Speed);
+        Stats.Add(Stat.Speed, Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5); // a revisar si anda cuando se puedan curar status
+    }
+
 }
+
 
 public class DamageDetails
 {

@@ -107,18 +107,3 @@ public enum MoveTarget
 {
     Foe, Self
 }
-//{
-
-//    [field: SerializeField] public string name { get; private set; }
-
-//    [field: SerializeField, TextArea] public string description { get; private set; }
-
-//    [field: SerializeField] public PokemonType type { get; private set; }
-
-//    [field: SerializeField] public int pp { get; private set; }
-
-//    [field: SerializeField] public int power { get; private set; }
-
-//    [field: SerializeField] public int accuracy { get; private set; }
-
-//}

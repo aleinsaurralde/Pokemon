@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning($"No se encontró TrainerController en el padre de {trigger.name}");
+                    Debug.LogWarning($"No se encontrï¿½ TrainerController en el padre de {trigger.name}");
                 }
             };
         }

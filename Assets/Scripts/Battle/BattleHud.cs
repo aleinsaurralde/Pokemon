@@ -72,23 +72,6 @@ public class BattleHud : MonoBehaviour
         yield return hpBar.UpdateHealthUINumber(_pokemon.HP);
     }
 
-    //public void AnimateHPChangeUI()
-    //{
-    //    if (!gameObject.activeInHierarchy)
-    //    {
-    //        return;
-    //    }
-    //    if (_pokemon.HpChanged)
-    //    {
-    //        StartCoroutine(UpdateHPUI());
-    //        if (maxHp != null)
-    //        {
-    //            StartCoroutine(UpdateHPNumberUI());
-    //            _pokemon.HpChanged = false;
-    //        }
-    //    }            
-    //}
-
     public IEnumerator AnimateHPChangeUI()
     {
         // Si el HUD no está activo o no hubo cambios, salimos

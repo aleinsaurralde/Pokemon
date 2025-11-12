@@ -11,11 +11,11 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Interactable
+  - Obstacle
   - 
   - LongGrass
-  - 
+  - FOVLayer
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1833820355
+    locked: 0
+  - name: Foreground
+    uniqueID: 1043924009
     locked: 0
