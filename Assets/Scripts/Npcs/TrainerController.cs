@@ -25,11 +25,6 @@ public class TrainerController : MonoBehaviour
         StartCoroutine (DialogManager.Instance.ShowDialog(dialog, () =>
         {
             Debug.Log("Trainer Battle");
-            var battleState = GameController.Instance.BattleState;
-
-            battleState.ConfigureTrainerBattle(this);
-
-            OnTrainerBattle?.Invoke();
 
         }));
         yield return null;
