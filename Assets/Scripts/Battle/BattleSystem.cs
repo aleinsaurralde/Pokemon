@@ -6,6 +6,7 @@ using System.Resources;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum BattleAction {Move, SwitchPokemon, UseItem, Run }
 
@@ -17,16 +18,20 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit enemyUnit;
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] PartyScreen partyScreen;
+    [SerializeField] Image playerImage;
+    [SerializeField] Image trainerImage;
 
     public BattleUnit PlayerUnit => playerUnit;
     public BattleUnit EnemyUnit => enemyUnit;
     public BattleDialogBox DialogBox => dialogBox;
     public PartyScreen PartyScreen => partyScreen;
-
+    public Image PlayerImage => playerImage;
+    public Image TrainerImage => trainerImage;
 
     public IGameState currentState { get; private set;}
     public IGameState prevState;
     public Dictionary<Type, IGameState> states { get; private set; }
+
     public event Action<bool> OnBattleOver;
 
     public int currentAction;
@@ -34,6 +39,12 @@ public class BattleSystem : MonoBehaviour
     public int currentMember;
 
     public PokemonParty playerParty { get; private set; }
+    public PokemonParty trainerParty { get; private set; }
+
+    private bool isTrainerBattle = false;
+    public bool IsTrainerBattle => isTrainerBattle;
+    public PlayerController player { get; private set; }
+    public TrainerController trainer { get; private set; }
     public Pokemon wildPokemon { get; private set; }
 
     private void Awake()
@@ -69,10 +80,22 @@ public class BattleSystem : MonoBehaviour
     }
 
 
-    public void StartBattle(PokemonParty PlayerParty, Pokemon WildPokemon)
+    public void StartWildBattle(PokemonParty PlayerParty, Pokemon WildPokemon)
     {
         playerParty = PlayerParty;
         wildPokemon = WildPokemon;
+        isTrainerBattle = false;
+
+        ChangeState<StartState>();
+    }
+    public void StartTrainerBattle(PokemonParty PlayerParty, PokemonParty TrainerParty)
+    {
+        playerParty = PlayerParty;
+        trainerParty = TrainerParty;
+
+        isTrainerBattle = true;
+        player = playerParty.GetComponent<PlayerController>();
+        trainer = trainerParty.GetComponent<TrainerController>();
         ChangeState<StartState>();
     }
     private void BattleOver(bool won)

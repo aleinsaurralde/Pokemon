@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     //    rb.velocity = new Vector3(move.x * speed, rb.velocity.y, move.z * speed);
 
     //}
+
+    [SerializeField] string playerName;
+    [SerializeField] Sprite playerSprite;
+
     public float moveSpeed = 5f;
     public float gridSize = 1f;
 
@@ -123,6 +127,14 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(transform.position, interactPosition, Color.red, 0.5f);
     }
 
+    public string PlayerName
+    {
+        get => playerName;
+    }
+    public Sprite PlayerSprite
+    {
+        get => playerSprite;
+    }
 }
 
 

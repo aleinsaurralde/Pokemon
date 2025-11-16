@@ -1,12 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainerController : MonoBehaviour
 {
+    [SerializeField] string trainerName;
+    [SerializeField] Sprite trainerSprite;    
     [SerializeField] GameObject exclamation;
     [SerializeField] Dialog dialog;
-    [SerializeField] GameObject fov;   
+    [SerializeField] GameObject fov;
+
+    public event Action OnTrainerBattle;
 
     public IEnumerator TriggerTrainerBattle()
     {
@@ -20,6 +25,12 @@ public class TrainerController : MonoBehaviour
         StartCoroutine (DialogManager.Instance.ShowDialog(dialog, () =>
         {
             Debug.Log("Trainer Battle");
+            var battleState = GameController.Instance.BattleState;
+
+            battleState.ConfigureTrainerBattle(this);
+
+            OnTrainerBattle?.Invoke();
+
         }));
         yield return null;
     }
@@ -53,5 +64,14 @@ public class TrainerController : MonoBehaviour
         }
 
         fov.transform.eulerAngles = new Vector3 (0f,angle,0f);
+    }
+
+    public string TrainerName
+    {
+        get => trainerName;
+    }
+    public Sprite TrainerSprite
+    {
+        get => trainerSprite;
     }
 }

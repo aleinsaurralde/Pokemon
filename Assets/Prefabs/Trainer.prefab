@@ -221,6 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a5b095df20cc6408c4090caafff9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainerName: Wacho Malo
+  trainerSprite: {fileID: 21300000, guid: 64e294c89c4c2b440bcd40588caecd0d, type: 3}
   exclamation: {fileID: 85263829}
   dialog:
     lines:
