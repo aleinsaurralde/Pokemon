@@ -36,6 +36,7 @@ public class ActionSelectionState : IGameState
                     break;
                 case 1:
                     // Item state futuro
+                    bs.StartCoroutine(bs.RunTurns(BattleAction.UseItem));
                     break;
                 case 2:
                     bs.ChangeState<PartyScreenState>();

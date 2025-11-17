@@ -19,6 +19,8 @@ public class PartyMemberUI : MonoBehaviour
     [SerializeField] Sprite unselectedFaintedImage;
     [SerializeField] Sprite highlightedFaintedImage;
 
+    [SerializeField] Sprite emptySlot;
+
     [SerializeField] Image statusArea;
 
     [SerializeField] Sprite psnImage;
@@ -85,6 +87,10 @@ public class PartyMemberUI : MonoBehaviour
             else
                 backgroundImage.sprite = unselectedFaintedImage;
         }
+    }
+    public void SetEmptyImage()
+    {
+        backgroundImage.sprite = emptySlot;
     }
    
 }

@@ -1064,6 +1064,7 @@ MonoBehaviour:
   highlightedImage: {fileID: 21300000, guid: 1eea2ad185aa1bc4197095c54e333672, type: 3}
   unselectedFaintedImage: {fileID: 21300000, guid: fb71ed4f4ebf4044db27e4469cd3d09c, type: 3}
   highlightedFaintedImage: {fileID: 21300000, guid: 5f4431dc0d31b484ab1243adf2d79071, type: 3}
+  emptySlot: {fileID: 21300000, guid: 07c472e0228806545a8578c75db8fbba, type: 3}
   statusArea: {fileID: 7349156500701791084}
   psnImage: {fileID: -1858327567, guid: 01f389eda117fd747a6b2695ac18aa45, type: 3}
   slpImage: {fileID: 848204226, guid: 01f389eda117fd747a6b2695ac18aa45, type: 3}

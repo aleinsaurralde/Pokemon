@@ -163,6 +163,19 @@ public class ConditionsDB
             }
         },
     };
+
+    public static float GetStatusBonus (Conditions condition)
+    {
+        return condition?.Id switch
+        {
+            ConditionID.slp => 2f,
+            ConditionID.frz => 2f,
+            ConditionID.par => 1.5f,
+            ConditionID.psn => 1.5f,
+            ConditionID.brn => 1.5f,
+            _ => 1f // default
+        };
+    }
 }
 
 public enum ConditionID

@@ -11,8 +11,6 @@ public class TrainerController : MonoBehaviour
     [SerializeField] Dialog dialog;
     [SerializeField] GameObject fov;
 
-    public event Action OnTrainerBattle;
-
     public IEnumerator TriggerTrainerBattle()
     {
         GameController.Instance.StopMovement();

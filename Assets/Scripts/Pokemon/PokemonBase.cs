@@ -18,6 +18,8 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spDefense;
     [SerializeField] int speed;
 
+    [SerializeField] int catchRate = 255;
+
     [SerializeField] List<LearnableMove> learnableMoves;
     public string Name
     {
@@ -44,6 +46,10 @@ public class PokemonBase : ScriptableObject
         get { return type2; }
     }
 
+    public int CatchRate
+    {
+        get { return catchRate; }
+    }
 
     public int MaxHp
     {

@@ -21,7 +21,9 @@ public class GameBattleState : IGameState
         var playerParty = playerController.GetComponent<PokemonParty>();
         var wildPokemon = Object.FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPokemon();
 
-        battleSystem.StartBattle(playerParty, wildPokemon);
+        var wildPokemonCopy = new Pokemon(wildPokemon.Base, wildPokemon.Level);
+
+        battleSystem.StartWildBattle(playerParty, wildPokemon);
     }
 
     public void HandleUpdate()
