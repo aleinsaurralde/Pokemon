@@ -43,6 +43,7 @@ public class ActionSelectionState : IGameState
                     break;
                 case 3:
                     // Run state futuro
+                    bs.StartCoroutine(bs.RunTurns(BattleAction.Run));
                     break;
             }
         }

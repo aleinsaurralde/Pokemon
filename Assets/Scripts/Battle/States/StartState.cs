@@ -20,10 +20,12 @@ public class StartState : IGameState
     {
         battleSystem.PlayerUnit.Setup(battleSystem.playerParty.GetHealthyPokemon());
         battleSystem.EnemyUnit.Setup(battleSystem.wildPokemon);
-        battleSystem.PartyScreen.Init();
         battleSystem.DialogBox.SetMoveNames(battleSystem.PlayerUnit.Pokemon.Moves);
 
         yield return battleSystem.DialogBox.TypeDialog($"A wild {battleSystem.EnemyUnit.Pokemon.Base.Name} appeared!");
+
+        battleSystem.escapeAttempts = 0;
+        battleSystem.PartyScreen.Init();
         battleSystem.ChangeState<ActionSelectionState>();
     }
 

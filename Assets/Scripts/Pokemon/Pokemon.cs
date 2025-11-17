@@ -20,6 +20,7 @@ public class Pokemon
         Init();
     }
     public PokemonBase Base {  get { return _base; } }
+    public int Exp { get; set; }
     public int Level { get { return level; } }
     public int HP { get; set; }
     public bool HpChanged { get; set; }
@@ -49,6 +50,8 @@ public class Pokemon
                 break;
             }
         }
+        Exp = Base.GetExpForLevel(Level);
+
         CalculateStats();
 
         HP = MaxHp;
@@ -127,7 +130,15 @@ public class Pokemon
         }
     }
     
-
+    public bool CheckForLevelUp()
+    {
+        if(Exp > Base.GetExpForLevel(level + 1))
+        {
+            ++level;
+            return true;
+        }
+        return false;
+    }
     public int Attack
     {
         get { return GetStat(Stat.Attack); }

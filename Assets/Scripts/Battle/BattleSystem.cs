@@ -40,6 +40,7 @@ public class BattleSystem : MonoBehaviour
     public int currentMove;
     public int currentMember;
 
+
     public PokemonParty playerParty { get; private set; }
     public PokemonParty trainerParty { get; private set; }
 
@@ -48,6 +49,8 @@ public class BattleSystem : MonoBehaviour
     public PlayerController player { get; private set; }
     public TrainerController trainer { get; private set; }
     public Pokemon wildPokemon { get; private set; }
+
+    public int escapeAttempts { get; set; }
 
     private void Awake()
     {
@@ -151,10 +154,10 @@ public class BattleSystem : MonoBehaviour
             {
                 playerGoesFirst = playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed;
             }
-                
 
 
-                var firstUnit = (playerGoesFirst) ? playerUnit : enemyUnit;
+
+            var firstUnit = (playerGoesFirst) ? playerUnit : enemyUnit;
             var secondUnit = (playerGoesFirst) ? enemyUnit : playerUnit;
 
             var secondPokemon = secondUnit.Pokemon;
@@ -176,12 +179,11 @@ public class BattleSystem : MonoBehaviour
                 }
             }
         }
-        else 
+        else
         {
             if (playerAction == BattleAction.SwitchPokemon)
             {
                 var selectedPokemon = playerParty.Pokemons[currentMember];
-                ChangeState<BusyState>();
                 yield return SwitchPokemon(selectedPokemon);
             }
             else if (playerAction == BattleAction.UseItem)
@@ -189,6 +191,11 @@ public class BattleSystem : MonoBehaviour
                 dialogBox.EnableActionSelector(false);
                 yield return ThrowPokeball();
             }
+            else if (playerAction == BattleAction.Run)
+            {
+                yield return TryToEscape();
+            }
+            
             //enemy turn
             var enemyMove = enemyUnit.Pokemon.GetRandomMove();
             yield return RunMove(enemyUnit, playerUnit, enemyMove);
@@ -251,12 +258,7 @@ public class BattleSystem : MonoBehaviour
             }
             if (targetUnit.Pokemon.HP <= 0)
             {
-                yield return dialogBox.TypeDialog($"{targetUnit.Pokemon.Base.Name} Fainted");
-                targetUnit.PlayFaintAnimation();
-
-                yield return new WaitForSeconds(2f);
-
-                CheckForBattleOver(targetUnit);
+                yield return HandlePokemonFainted(targetUnit);
                 yield return RunAfterTurn(sourceUnit);
 
             }
@@ -278,12 +280,7 @@ public class BattleSystem : MonoBehaviour
         yield return ShowStatusChanges(sourceUnit.Pokemon);
         if (sourceUnit.Pokemon.HP <= 0)
         {
-            yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.Name} Fainted");
-            sourceUnit.PlayFaintAnimation();
-
-            yield return new WaitForSeconds(2f);
-
-            CheckForBattleOver(sourceUnit);
+            yield return HandlePokemonFainted(sourceUnit);
         }
     }
     private bool CheckIfMoveHits(Move move, Pokemon sourceUnit, Pokemon targetUnit)
@@ -404,13 +401,12 @@ public class BattleSystem : MonoBehaviour
     public void HandleUpdate()
     {
         currentState?.HandleUpdate();
-
-        if (Input.GetKeyDown(KeyCode.T))
-            StartCoroutine(ThrowPokeball());
     }
 
     public IEnumerator SwitchPokemon(Pokemon newPokemon)
     {
+        ChangeState<BusyState>();
+
         if (playerUnit.Pokemon.HP > 0)
         {
             yield return dialogBox.TypeDialog($"Come back, {playerUnit.Pokemon.Base.Name}");
@@ -423,9 +419,10 @@ public class BattleSystem : MonoBehaviour
         playerUnit.Setup(newPokemon);
         dialogBox.SetMoveNames(newPokemon.Moves);
 
-        yield return (dialogBox.TypeDialog($"Go {newPokemon.Base.Name}!"));
+        yield return dialogBox.TypeDialog($"Go {newPokemon.Base.Name}!");
 
         ChangeState<ActionSelectionState>();
+
     }
    
     IEnumerator ThrowPokeball()
@@ -502,5 +499,77 @@ public class BattleSystem : MonoBehaviour
         }
 
         return shakeCount;
+    }
+    
+    private IEnumerator TryToEscape()
+    {
+        ChangeState<BusyState>();
+
+        if (isTrainerBattle) 
+        {
+            yield return dialogBox.TypeDialog($"You can't run from trainer battles!");
+            ChangeState<ActionSelectionState>();
+            yield break;
+        }
+
+        ++escapeAttempts;
+
+        int playerSpeed = playerUnit.Pokemon.Speed;
+        int enemySpeed = enemyUnit.Pokemon.Speed;
+
+        if (enemySpeed < playerSpeed)
+        {
+            yield return dialogBox.TypeDialog($"Ran away safely!");
+            BattleOver(true);
+        }
+        else
+        {
+            float f = (playerSpeed * 128) / enemySpeed + 30 * escapeAttempts;
+            f = f % 256;
+
+            if(UnityEngine.Random.Range(0,255) < f)
+            {
+                yield return dialogBox.TypeDialog($"Ran away safely!");
+                BattleOver(true);
+            }
+            else
+            {
+                yield return dialogBox.TypeDialog($"Can't escape!");
+                ChangeState<RunningTurnState>();
+            }
+        }
+    }
+    private IEnumerator HandlePokemonFainted(BattleUnit faintedUnit)
+    {
+        yield return dialogBox.TypeDialog($"{faintedUnit.Pokemon.Base.Name} Fainted");
+        faintedUnit.PlayFaintAnimation();
+
+        yield return new WaitForSeconds(2f);
+
+        if (!faintedUnit.IsPlayerUnit)
+        {
+            //EXPGAIN
+            int expYield = faintedUnit.Pokemon.Base.ExpYield;
+            int enemyLevel = faintedUnit.Pokemon.Level;
+            float trainerBonus = (isTrainerBattle) ? 1.5f : 1f;
+
+            int expGain = Mathf.FloorToInt(expYield * enemyLevel * trainerBonus) / 7;
+
+            playerUnit.Pokemon.Exp += expGain;
+            yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} gained {expGain} exp");
+            yield return playerUnit.Hud.SetExpSmooth();
+            //check level up
+
+            while (playerUnit.Pokemon.CheckForLevelUp())
+            {
+                playerUnit.Hud.SetLevel();
+                yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} grew to level {playerUnit.Pokemon.Level}");
+                yield return playerUnit.Hud.SetExpSmooth(true);
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        CheckForBattleOver(faintedUnit);
     }
 }

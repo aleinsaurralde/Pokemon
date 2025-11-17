@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using DG.Tweening;
 
 public class BattleHud : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BattleHud : MonoBehaviour
     [SerializeField] TextMeshProUGUI maxHp;
     [SerializeField] TextMeshProUGUI currentHp;
     [SerializeField] Image statusArea;
+    [SerializeField] GameObject expBar;
 
     [SerializeField] Sprite psnImage;
     [SerializeField] Sprite slpImage;
@@ -26,13 +28,15 @@ public class BattleHud : MonoBehaviour
     {
         _pokemon = pokemon;
         nameText.text = pokemon.Base.Name;
-        levelText.text = $"{pokemon.Level}";
+        SetLevel();
         hpBar.SetHP((float)pokemon.HP / pokemon.MaxHp);
         if (maxHp != null)
         {
             maxHp.text = $"{pokemon.MaxHp}";
         }
         StartCoroutine(hpBar.UpdateHealthUINumber(pokemon.HP));
+        
+        SetExp();
 
         statusImage = new Dictionary<ConditionID, Sprite>()
         {
@@ -60,6 +64,38 @@ public class BattleHud : MonoBehaviour
                 statusArea.sprite = statusImage[_pokemon.Status.Id];
             }
         }
+    }
+
+    public void SetExp()
+    {
+        if (expBar == null) return;
+
+        float normalizedExp = GetNormalizedExp();
+
+        expBar.transform.localScale = new Vector3 (normalizedExp, 1, 1);
+    }
+    public IEnumerator SetExpSmooth(bool reset=false)
+    {
+        if (expBar == null) yield break;
+
+        if (reset)
+            expBar.transform.localScale = new Vector3(0, 1, 1);
+
+        float normalizedExp = GetNormalizedExp();
+
+        yield return expBar.transform.DOScaleX(normalizedExp, 1.5f).WaitForCompletion();
+    }
+    private float GetNormalizedExp()
+    {
+        int currentLevelExp = _pokemon.Base.GetExpForLevel(_pokemon.Level);
+        int nextLevelExp = _pokemon.Base.GetExpForLevel(_pokemon.Level+1);
+
+        float normalizedExp = (float)(_pokemon.Exp - currentLevelExp) / (nextLevelExp - currentLevelExp);
+        return Mathf.Clamp01(normalizedExp);
+    }
+    public void SetLevel()
+    {
+        levelText.text = $"{_pokemon.Level}";
     }
 
     public IEnumerator UpdateHPUI()

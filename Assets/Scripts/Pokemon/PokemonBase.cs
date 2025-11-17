@@ -18,9 +18,51 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spDefense;
     [SerializeField] int speed;
 
+    [SerializeField] int expYield;
+    [SerializeField] GrowthRate growthRate;
+
     [SerializeField] int catchRate = 255;
 
     [SerializeField] List<LearnableMove> learnableMoves;
+
+    public int GetExpForLevel(int level)
+    {
+        switch (growthRate)
+        {
+            case GrowthRate.Erratic:
+                if (level <= 50)
+                    return (int)((level * level * level) * (100 - level) / 50f);
+                else if (level <= 68)
+                    return (int)((level * level * level) * (150 - level) / 100f);
+                else if (level <= 98)
+                    return (int)((level * level * level) * (1911 - 10 * level) / 1500f);
+                else // 99–100
+                    return (int)((level * level * level) * (160 - level) / 100f);
+
+            case GrowthRate.Fast:
+                return 4 * (level * level * level) / 5;
+
+            case GrowthRate.MediumFast:
+                return level * level * level;
+
+            case GrowthRate.MediumSlow:
+                return (int)(1.2f * level * level * level - 15 * level * level + 100 * level - 140);
+
+            case GrowthRate.Slow:
+                return 5 * level * level * level / 4;
+
+            case GrowthRate.Fluctuating:
+                if (level <= 15)
+                    return (int)(level * level * level * (24 + (level + 1) / 3f) / 50f);
+                else if (level <= 36)
+                    return (int)(level * level * level * (14 + level) / 50f);
+                else // 37–100
+                    return (int)(level * level * level * (32 + level / 2f) / 50f);
+
+            default:
+                return -1;
+        }
+    }
     public string Name
     {
         get { return name; }
@@ -45,12 +87,18 @@ public class PokemonBase : ScriptableObject
     {
         get { return type2; }
     }
-
+    public GrowthRate GrowthRate
+    {
+        get { return growthRate; }
+    }
     public int CatchRate
     {
         get { return catchRate; }
     }
-
+    public int ExpYield
+    {
+        get { return expYield; }
+    }
     public int MaxHp
     {
         get { return maxHp; }
@@ -111,6 +159,10 @@ public class PokemonBase : ScriptableObject
         Steel,
         Fairy
     }
+public enum GrowthRate
+{
+    Erratic, Fast, MediumFast, MediumSlow, Slow, Fluctuating 
+}
 
 public class TypeChart
 {
