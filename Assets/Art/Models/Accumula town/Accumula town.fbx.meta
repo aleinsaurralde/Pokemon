@@ -1,0 +1,251 @@
+fileFormatVersion: 2
+guid: 902a110c1190a3b4fb82057c060f4a6f
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gake01a
+    second: {fileID: 2100000, guid: 0c00c9ace8f1c6e478ba591e55dcd9ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gake1_0
+    second: {fileID: 2100000, guid: 9b5b86aa64e2f1446ba17320ec8fcfdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gake_futa
+    second: {fileID: 2100000, guid: 15bff814b71b69f49b20450430d2e6ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass01ax
+    second: {fileID: 2100000, guid: 4696fd8528612b54ab72b70f598565bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kage_out
+    second: {fileID: 2100000, guid: 3c50cf4b177fe904d860445abfe78d97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ki02ax
+    second: {fileID: 2100000, guid: 110c975edbaa49f488c60fa24ca2b42a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ki02bx
+    second: {fileID: 2100000, guid: accf363c60a23c5419b45237996b393f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ki02c
+    second: {fileID: 2100000, guid: d88cbcc827e5b3e41933d7b7547d4b8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ki02dx
+    second: {fileID: 2100000, guid: 8e1f0a843685cef489891e18913c84c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: michi01a
+    second: {fileID: 2100000, guid: 8f4fad2128d2f9f429476858532c6dd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nagaisu
+    second: {fileID: 2100000, guid: a4628341246046547a48a1113b2bc35f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02_kabe01
+    second: {fileID: 2100000, guid: cdb76ab52c09a5746b2ac3ae528a138b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02_kabe02
+    second: {fileID: 2100000, guid: 0fd2641903db20149ba03ac3d169053d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02_kabe03
+    second: {fileID: 2100000, guid: f82347718f5aaaf449d7ba8e7f7f5d53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02_kabe04
+    second: {fileID: 2100000, guid: 96e4c9c406c27284e8dd9e80ec7c0f12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02_ki_sita
+    second: {fileID: 2100000, guid: f117f70f65f397b4d9dc64a8e9b64f06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02_kiwa
+    second: {fileID: 2100000, guid: 5be05f717f088ac47b816e88d9ec6d95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02hibi
+    second: {fileID: 2100000, guid: 68c516fbaea09f548b6c0d1493120ba9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02kaidan
+    second: {fileID: 2100000, guid: 6f6b70abf254d9b43b3f492f9292a328, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02kusa
+    second: {fileID: 2100000, guid: 60e7bee9847cc8d449d2cdab14c90e5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02michi_a
+    second: {fileID: 2100000, guid: 13c2785e9ecb5774c985fb9d3982d168, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02michi_a2
+    second: {fileID: 2100000, guid: fad9fbb69d064c549b81f5e04f1e1eac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02michi_b
+    second: {fileID: 2100000, guid: 28a162e8f4099a549b0a1900b92f406b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02michi_b2
+    second: {fileID: 2100000, guid: bf4a09d38c12f55468860e31f4cdc80e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02michi_b3
+    second: {fileID: 2100000, guid: edcbca43cefb78a44b71025d749df92a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02michi_b4
+    second: {fileID: 2100000, guid: 5fa19dd9806bab541a9d934ec44bc573, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t02michi_b5
+    second: {fileID: 2100000, guid: a7f24b6cd09b90f47a76c62cc8b342f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: t2_saku01
+    second: {fileID: 2100000, guid: 93c4fb2440c73824dbd6963922a51e04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ue_grass00
+    second: {fileID: 2100000, guid: 40987bd147c975e498b9c47357a7337d, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
