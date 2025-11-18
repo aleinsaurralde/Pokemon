@@ -52,6 +52,8 @@ public class BattleSystem : MonoBehaviour
 
     public int escapeAttempts { get; set; }
 
+    public IBattleAIStrategy enemyAIStrategy { get; set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -137,7 +139,7 @@ public class BattleSystem : MonoBehaviour
         if (playerAction == BattleAction.Move)
         {
             playerUnit.Pokemon.CurrentMove = playerUnit.Pokemon.Moves[currentMove];
-            enemyUnit.Pokemon.CurrentMove = enemyUnit.Pokemon.GetRandomMove();
+            enemyUnit.Pokemon.CurrentMove = enemyAIStrategy.ChooseMove(enemyUnit.Pokemon, playerUnit.Pokemon);
 
             int playerMovePriority = playerUnit.Pokemon.CurrentMove.Base.Priority;
             int enemyMovePriority = enemyUnit.Pokemon.CurrentMove.Base.Priority;

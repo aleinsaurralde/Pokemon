@@ -23,6 +23,8 @@ public class PokemonBase : ScriptableObject
 
     [SerializeField] int catchRate = 255;
 
+    [SerializeField] EnemyAIStrategyType aiStrategy;
+
     [SerializeField] List<LearnableMove> learnableMoves;
 
     public int GetExpForLevel(int level)
@@ -63,6 +65,7 @@ public class PokemonBase : ScriptableObject
                 return -1;
         }
     }
+    public EnemyAIStrategyType AIStrategy => aiStrategy;
     public string Name
     {
         get { return name; }
@@ -213,4 +216,11 @@ public enum Stat
     //not actual stats, just for battle changes
     Accuracy,
     Evasion,
+}
+public enum EnemyAIStrategyType
+{
+    Random,
+    Aggressive,
+    Defensive,
+    Smart
 }

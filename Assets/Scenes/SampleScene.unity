@@ -8044,7 +8044,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
       propertyPath: pokemons.Array.size
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[3]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 94a3159f81d433843b7f42fe0880406a, type: 2}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[3].level
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[4]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 1df3e1def1796014eb23e973f4e50104, type: 2}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[4].level
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1095296076430275593, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
       propertyPath: m_Name
