@@ -11,10 +11,6 @@ public class DifficultySelectionUI : MonoBehaviour
     [SerializeField] private Button hardButton;
     [SerializeField] private TextMeshProUGUI descriptionText;
 
-    [Header("Descriptions")]
-    [SerializeField] private string easyDescription = "Fácil: Items poderosos para empezar";
-    [SerializeField] private string normalDescription = "Normal: Items balanceados";
-    [SerializeField] private string hardDescription = "Difícil: Items básicos, mayor desafío";
 
     private void Start()
     {
@@ -44,7 +40,6 @@ public class DifficultySelectionUI : MonoBehaviour
             playerInventory.InitializeWithDifficulty();
         }
 
-        Debug.Log($"Selected difficulty: {difficulty}");
         Hide();
     }
 

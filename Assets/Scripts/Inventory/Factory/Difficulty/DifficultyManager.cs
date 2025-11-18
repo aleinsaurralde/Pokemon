@@ -32,7 +32,6 @@ public class DifficultyManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // Inicializar el item factory
         if (itemFactory != null)
             itemFactory.Initialize();
 
@@ -51,7 +50,6 @@ public class DifficultyManager : MonoBehaviour
             _ => normalConfig
         };
 
-        Debug.Log($"Difficulty set to: {difficulty}");
     }
 
     public List<ItemSlot> GetStartingItems()

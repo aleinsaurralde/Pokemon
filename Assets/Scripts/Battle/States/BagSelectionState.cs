@@ -9,7 +9,6 @@ public class BagSelectionState : IGameState
     public Dictionary<Type, IGameState> states { get; private set; }
     private IGameState currentState;
 
-    private int selectedItem = 0;
     public BagSelectionState(BattleSystem battleSystem, Inventory inventory)
     {
         _battleSystem = battleSystem;
