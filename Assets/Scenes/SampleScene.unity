@@ -14593,8 +14593,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4620387610363353435, guid: a0f413509fd8868449ab22ae8565e7dd, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620387610363353435, guid: a0f413509fd8868449ab22ae8565e7dd, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: Hola.
+      value: Usa la Z para interactuar o seleccionar.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620387610363353435, guid: a0f413509fd8868449ab22ae8565e7dd, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: Y la X para volver a atras (solo en combate)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f413509fd8868449ab22ae8565e7dd, type: 3}
