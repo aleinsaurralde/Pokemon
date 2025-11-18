@@ -56,7 +56,6 @@ public class DifficultyManager : MonoBehaviour
     {
         if (_currentFactory == null || itemFactory == null)
         {
-            Debug.LogError("Factory or ItemFactory not initialized!");
             return new List<ItemSlot>();
         }
 

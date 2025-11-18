@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18187475, g: 0.22755322, b: 0.30741835, a: 1}
+  m_IndirectSpecularColor: {r: 0.18187453, g: 0.22755273, b: 0.30741745, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2931,9 +2931,6 @@ MonoBehaviour:
   normalButton: {fileID: 1495407754}
   hardButton: {fileID: 1988704128}
   descriptionText: {fileID: 2038929527}
-  easyDescription: "F\xE1cil: Items poderosos para empezar"
-  normalDescription: 'Normal: Items balanceados'
-  hardDescription: "Dif\xEDcil: Items b\xE1sicos, mayor desaf\xEDo"
 --- !u!1001 &394845585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3616,6 +3613,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 382654244, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Ojo con el pasto alto
+      objectReference: {fileID: 0}
+    - target: {fileID: 382654244, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: En este pasto podes encontrate con Charmander, Bulbasaur y Squirtle
+      objectReference: {fileID: 0}
     - target: {fileID: 38393900465047586, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
       propertyPath: m_Name
       value: 'Npc '
@@ -4219,8 +4224,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemons:
-  - _base: {fileID: 11400000, guid: 1df3e1def1796014eb23e973f4e50104, type: 2}
-    level: 25
+  - _base: {fileID: 11400000, guid: f9e0bcc07d2153147b772ee1cc8357a6, type: 2}
+    level: 10
+  - _base: {fileID: 11400000, guid: eaedc9900a2f95a4f9d9945cbf05bb4a, type: 2}
+    level: 10
+  - _base: {fileID: 11400000, guid: 94a3159f81d433843b7f42fe0880406a, type: 2}
+    level: 10
 --- !u!4 &635624071
 Transform:
   m_ObjectHideFlags: 0
@@ -7510,6 +7519,71 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1001 &1188005616
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 382654244, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: La dificultad que hayas elegido afecta los objetos con los que empezas
+      objectReference: {fileID: 0}
+    - target: {fileID: 382654244, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: Por ejemplo, si elegiste "facil", empezas con 2 hyper pociones
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047586, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_Name
+      value: Npc  (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
 --- !u!1 &1191824989
 GameObject:
   m_ObjectHideFlags: 0
@@ -8467,6 +8541,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329733995}
   m_CullTransparentMesh: 1
+--- !u!1001 &1330327918
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 382654244, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Los pokemon salvaje pueden tener diferentes tipos de inteligencia
+      objectReference: {fileID: 0}
+    - target: {fileID: 382654244, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: Por suerte para vos, los de este pasto no son tan inteligentes
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047586, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_Name
+      value: Npc  (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38393900465047587, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
 --- !u!1001 &1340637638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8956,6 +9095,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360615738}
   m_CullTransparentMesh: 1
+--- !u!1 &1369188406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 38393901561651838, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+  m_PrefabInstance: {fileID: 1188005616}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1369188408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369188406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39565459e4c99214ba7b4362a40dfbad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkDownSprites:
+  - {fileID: 2103844360, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 1101622472, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 2103844360, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -953785618, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkUpSprites:
+  - {fileID: -2138610721, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 1192585293, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -2138610721, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1381362607, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkRightSprites:
+  - {fileID: 752710398, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -10193989, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkLeftSprites:
+  - {fileID: -1060076475, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1331233999, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1060076475, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 974777536, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  defaultDirection: 1
 --- !u!1 &1374883746
 GameObject:
   m_ObjectHideFlags: 0
@@ -14233,6 +14408,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b70ff6003609c2448da2b30b5e36770, type: 3}
+--- !u!1 &2106086709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 38393901561651838, guid: e2ae2900f31c2e24bb12b4a5365dbdea, type: 3}
+  m_PrefabInstance: {fileID: 1330327918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2106086711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106086709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39565459e4c99214ba7b4362a40dfbad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkDownSprites:
+  - {fileID: 2103844360, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 1101622472, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 2103844360, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -953785618, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkUpSprites:
+  - {fileID: -2138610721, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 1192585293, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -2138610721, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1381362607, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkRightSprites:
+  - {fileID: 752710398, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -10193989, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  WalkLeftSprites:
+  - {fileID: -1060076475, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1331233999, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: -1060076475, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  - {fileID: 974777536, guid: 87222ece5f42db042b859e72bd3e20e4, type: 3}
+  defaultDirection: 1
 --- !u!1 &2109701780
 GameObject:
   m_ObjectHideFlags: 0
@@ -14381,6 +14592,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4620387610363353435, guid: a0f413509fd8868449ab22ae8565e7dd, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Hola.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f413509fd8868449ab22ae8565e7dd, type: 3}
 --- !u!1001 &2123254675
@@ -14494,15 +14709,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
       propertyPath: pokemons.Array.size
-      value: 5
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[0]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: f9e0bcc07d2153147b772ee1cc8357a6, type: 2}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[0].level
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[1]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 94a3159f81d433843b7f42fe0880406a, type: 2}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[1].level
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[2]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: c5e5f150ec022ae4fa8260a274df6303, type: 2}
+    - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
+      propertyPath: pokemons.Array.data[2].level
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
       propertyPath: pokemons.Array.data[3]._base
       value: 
-      objectReference: {fileID: 11400000, guid: 94a3159f81d433843b7f42fe0880406a, type: 2}
+      objectReference: {fileID: 11400000, guid: 87dbef9822f44f947927394cc26386d5, type: 2}
     - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
       propertyPath: pokemons.Array.data[3].level
-      value: 7
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 874447348151192910, guid: 06c91b51f1989f447bdfcba527a8cd9c, type: 3}
       propertyPath: pokemons.Array.data[4]._base

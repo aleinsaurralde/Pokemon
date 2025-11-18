@@ -33,8 +33,6 @@ public class Inventory : MonoBehaviour
         {
             AddItem(itemSlot.Item, itemSlot.Count);
         }
-
-        Debug.Log($"Inventory initialized with {startingItems.Count} item types");
     }
     public void Initialize()
     {
@@ -75,7 +73,6 @@ public class Inventory : MonoBehaviour
             var newSlot = new ItemSlot(item, count);
             slots.Add(newSlot);
         }
-        Debug.Log($"Added {count} {item.Name} to inventory");
     }
 
 

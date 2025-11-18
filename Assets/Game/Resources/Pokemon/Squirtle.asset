@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375c1234e956aa44db3f3e33a9368ca2, type: 3}
   m_Name: Squirtle
   m_EditorClassIdentifier: 
-  name: Squirtle
+  pokemonName: Squirtle
   frontSprite: {fileID: 21300000, guid: a1d46845301c24e4797a86910882bed0, type: 3}
   backSprite: {fileID: 21300000, guid: 33a5f1b689ce128488605e55dcc14763, type: 3}
   type1: 3
@@ -26,6 +26,7 @@ MonoBehaviour:
   expYield: 63
   growthRate: 3
   catchRate: 45
+  aiStrategy: 0
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 89b5de1d50158f54199af9d542e2326c, type: 2}
     level: 1

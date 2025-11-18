@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d948ccb62a1b74f8fd0b469c7b8929, type: 3}
   m_Name: Water Gun
   m_EditorClassIdentifier: 
-  name: Water Gun
+  moveName: Water Gun
   description: 
   type: 3
   power: 40
   accuracy: 100
+  alwaysHit: 0
   pp: 25
+  priority: 0
   category: 1
   effects:
     boosts: []
+    status: 0
+    volatileStatus: 0
+  secondaries: []
   target: 0

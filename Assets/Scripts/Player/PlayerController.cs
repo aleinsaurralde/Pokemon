@@ -75,7 +75,6 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    //Debug.Log("Movimiento bloqueado por obstáculo");
                 }
             }
         }
@@ -133,7 +132,6 @@ public class PlayerController : MonoBehaviour
             colliders[0].GetComponent<IInteractable>()?.Interact();
         }
 
-        Debug.DrawLine(transform.position, interactPosition, Color.red, 0.5f);
     }
 
     public string PlayerName

@@ -27,7 +27,6 @@ public class ItemFactory : ScriptableObject
         if (healthItemsDict != null && healthItemsDict.ContainsKey(itemName))
             return healthItemsDict[itemName];
 
-        Debug.LogWarning($"Health item '{itemName}' not found in factory!");
         return null;
     }
 }

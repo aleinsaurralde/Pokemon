@@ -22,8 +22,7 @@ public class TrainerController : MonoBehaviour
         //show dialog
         StartCoroutine (DialogManager.Instance.ShowDialog(dialog, () =>
         {
-            Debug.Log("Trainer Battle");
-
+            //trainer battle proximo
         }));
         yield return null;
     }

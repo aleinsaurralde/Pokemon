@@ -126,7 +126,6 @@ public class Pokemon
                 StatusChanges.Enqueue($"{Base.Name}'s {stat} fell!");
             }
 
-            Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
         }
     }
     

@@ -12,15 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d948ccb62a1b74f8fd0b469c7b8929, type: 3}
   m_Name: Growl
   m_EditorClassIdentifier: 
-  name: Growl
+  moveName: Growl
   description: 
   type: 1
   power: 0
   accuracy: 100
+  alwaysHit: 0
   pp: 40
+  priority: 0
   category: 2
   effects:
     boosts:
     - stat: 0
       boost: -1
+    status: 0
+    volatileStatus: 0
+  secondaries: []
   target: 0
