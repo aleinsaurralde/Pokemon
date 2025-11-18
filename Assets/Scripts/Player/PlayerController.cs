@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         Vector3 targetPos = startPos + moveDirection * gridSize;
 
         float elapsedTime = 0f;
-        float duration = gridSize / moveSpeed; // tiempo para moverse una casilla
+        float duration = gridSize / moveSpeed;
 
         while (elapsedTime < duration)
         {
@@ -105,12 +105,21 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        transform.position = targetPos;
+        transform.position = SnapToGrid(targetPos);
 
         isMoving = false;
-
         OnStepFinished?.Invoke();
     }
+
+    private Vector3 SnapToGrid(Vector3 pos)
+    {
+        return new Vector3(
+            Mathf.Round(pos.x - 0.5f) + 0.5f,
+            pos.y,
+            Mathf.Round(pos.z - 0.5f) + 0.5f
+        );
+    }
+
 
     private void Interact()
     {
