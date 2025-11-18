@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d339bc7029d1f4449a5da7ffbffa6678, type: 3}
+  m_Name: Potion
+  m_EditorClassIdentifier: 
+  name: Potion
+  description: Restores 20 HP to selected POKEMON
+  icon: {fileID: 21300000, guid: b7a1b40e4a7a2db428d947c0cca34e35, type: 3}
+  hpAmount: 20
+  restoreMaxHP: 0
+  ppAmount: 0
+  restoreMaxPP: 0
+  status: 0
+  recoverAllStatus: 0
+  revive: 0
+  maxRevive: 0

@@ -35,8 +35,8 @@ public class ActionSelectionState : IGameState
                     bs.ChangeState<MoveSelectionState>();
                     break;
                 case 1:
-                    // Item state futuro
-                    bs.StartCoroutine(bs.RunTurns(BattleAction.UseItem));
+                    bs.ChangeState<BagSelectionState>();
+                    //bs.StartCoroutine(bs.RunTurns(BattleAction.UseItem));
                     break;
                 case 2:
                     bs.ChangeState<PartyScreenState>();

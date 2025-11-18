@@ -1,11 +1,7 @@
 using DG.Tweening;
-using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Resources;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +18,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Image playerImage;
     [SerializeField] Image trainerImage;
     [SerializeField] GameObject pokeballSprite;
+    [SerializeField] InventoryUI inventoryUI;
+    [SerializeField] Inventory playerInventory;
 
     public BattleUnit PlayerUnit => playerUnit;
     public BattleUnit EnemyUnit => enemyUnit;
@@ -29,6 +27,8 @@ public class BattleSystem : MonoBehaviour
     public PartyScreen PartyScreen => partyScreen;
     public Image PlayerImage => playerImage;
     public Image TrainerImage => trainerImage;
+    public Inventory PlayerInventory => playerInventory;
+    public InventoryUI InventoryUI => inventoryUI;
 
     public IGameState currentState { get; private set;}
     public IGameState prevState;
@@ -39,6 +39,8 @@ public class BattleSystem : MonoBehaviour
     public int currentAction;
     public int currentMove;
     public int currentMember;
+    public bool usingItem;
+    public int itemIndex;
 
 
     public PokemonParty playerParty { get; private set; }
@@ -76,6 +78,7 @@ public class BattleSystem : MonoBehaviour
             { typeof(PartyScreenState), new PartyScreenState(this) },
             { typeof(BattleOverState), new BattleOverState(this) },
             { typeof(BusyState), new BusyState(this) },
+            { typeof(BagSelectionState), new BagSelectionState(this, playerInventory) },
         };
     }
 

@@ -191,13 +191,19 @@ public class Pokemon
         float d = a * move.Base.Power * ((float) attack / defense) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
-        UpdateHP(damage);
+        DecreaseHp(damage);
         return damageDetails;
     }
 
-    public void UpdateHP(int damage)
+    public void DecreaseHp(int damage)
     {
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+        HpChanged = true;
+    }
+
+    public void IncreseHp(int amount)
+    {
+        HP = Mathf.Clamp(HP + amount, 0, MaxHp);
         HpChanged = true;
     }
 
