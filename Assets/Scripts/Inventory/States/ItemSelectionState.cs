@@ -36,6 +36,7 @@ public class ItemSelectionState : IGameState
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            _battleSystem.usingItem = true;
             _bagSelectionState.ChangeState<ApplyItemState>();
         }
 

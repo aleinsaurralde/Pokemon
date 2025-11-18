@@ -27,7 +27,6 @@ public class BagSelectionState : IGameState
     public void Enter()
     {
         _battleSystem.InventoryUI.UpdateItemList();
-        _battleSystem.usingItem = true;
         ChangeState<ItemSelectionState>();
 
     }

@@ -92,6 +92,7 @@ public class PartyScreenState : IGameState
             }
             if (Input.GetKeyDown(KeyCode.X))
             {
+                _battleSystem.usingItem = false;
                 _battleSystem.ChangeState<BagSelectionState>();
             }
         }
