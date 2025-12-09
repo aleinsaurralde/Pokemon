@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ISaveable
 {
     //public float speed = 5f;
 
@@ -134,6 +136,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public object CaptureState()
+    {
+        var saveData = new PlayerSaveData()
+        {
+            position = new float[] { transform.position.x, transform.position.y, transform.position.z },
+            pokemons = GetComponent<PokemonParty>().Pokemons.Select(p=> p.GetSaveData()).ToList(),
+            inventory = GetComponent<Inventory>().CaptureState() as BagSaveData
+        };
+        return saveData;
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = (PlayerSaveData)state;
+        var pos = saveData.position;
+        transform.position = new Vector3(pos[0], pos[1], pos[2]);
+
+        GetComponent<PokemonParty>().Pokemons = saveData.pokemons.Select(s=>new Pokemon(s)).ToList();
+    }
+
     public string PlayerName
     {
         get => playerName;
@@ -144,5 +166,11 @@ public class PlayerController : MonoBehaviour
     }
 }
 
-
+[Serializable]
+public class PlayerSaveData
+{
+    public float[] position;
+    public List<PokemonSaveData> pokemons;
+    public BagSaveData inventory;
+}
 

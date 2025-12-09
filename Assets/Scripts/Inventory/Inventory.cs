@@ -1,10 +1,12 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, ISaveable
 {
     [SerializeField] private List<ItemSlot> slots;
 
@@ -75,7 +77,21 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public object CaptureState()
+    {
+        var saveData = new BagSaveData
+        {
+            slots = slots.Select(s => s.GetSaveData()).ToList(),
+        };
+        return saveData;
+    }
 
+    public void RestoreState(object state)
+    {
+        var saveData = (BagSaveData)state;
+
+        slots = saveData.slots.Select(s => new ItemSlot(s)).ToList();
+    }
 }
 
 [Serializable]
@@ -96,4 +112,30 @@ public class ItemSlot
         this.item = item;
         this.count = count;
     }
+
+    public ItemSlotSaveData GetSaveData()
+    {
+        return new ItemSlotSaveData
+        {
+            itemName = item.Name,
+            count = count,
+        };
+    }
+    public ItemSlot(ItemSlotSaveData saveData)
+    {
+        item = ItemDB.GetItemByName(saveData.itemName);
+        count = saveData.count;
+    }
 }
+[Serializable]
+public class BagSaveData
+{
+    public List<ItemSlotSaveData> slots;
+}
+
+[Serializable]
+public class ItemSlotSaveData
+{
+    public string itemName;
+    public int count;
+} 

@@ -34,6 +34,9 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        PokemonDB.Init();
+        MoveDB.Init();
+        ItemDB.Init();
         ConditionsDB.Init();
         DontDestroyOnLoad(gameObject);
     }

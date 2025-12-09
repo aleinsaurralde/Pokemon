@@ -191,6 +191,8 @@ GameObject:
   - component: {fileID: 1095296076430275588}
   - component: {fileID: 874447348151192910}
   - component: {fileID: 874447348151192904}
+  - component: {fileID: 221218169269693096}
+  - component: {fileID: -4353580453750848572}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -259,18 +261,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemons:
-  - _base: {fileID: 11400000, guid: 87dbef9822f44f947927394cc26386d5, type: 2}
-    level: 50
-  - _base: {fileID: 11400000, guid: eaedc9900a2f95a4f9d9945cbf05bb4a, type: 2}
-    level: 3
   - _base: {fileID: 11400000, guid: f9e0bcc07d2153147b772ee1cc8357a6, type: 2}
-    level: 7
+    level: 10
+  - _base: {fileID: 11400000, guid: 94a3159f81d433843b7f42fe0880406a, type: 2}
+    level: 12
   - _base: {fileID: 11400000, guid: c5e5f150ec022ae4fa8260a274df6303, type: 2}
-    level: 16
-  - _base: {fileID: 11400000, guid: 1df3e1def1796014eb23e973f4e50104, type: 2}
-    level: 40
+    level: 14
   - _base: {fileID: 11400000, guid: 87dbef9822f44f947927394cc26386d5, type: 2}
-    level: 26
+    level: 16
 --- !u!114 &874447348151192904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +285,33 @@ MonoBehaviour:
   playerSprite: {fileID: 21300000, guid: 3090d79c650915e40889eff905ec9689, type: 3}
   moveSpeed: 5
   gridSize: 1
+--- !u!114 &221218169269693096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095296076430275593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40de9ecb82f87f44b9dfc2621c86898e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - item: {fileID: 11400000, guid: 9028ff943ccbdf2499df060610e3ce6a, type: 2}
+    count: 2
+  - item: {fileID: 11400000, guid: 827cb3cdb86499b4687a98e72f84072a, type: 2}
+    count: 4
+--- !u!114 &-4353580453750848572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095296076430275593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdb81341bed54a41ad3919755e9833f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 

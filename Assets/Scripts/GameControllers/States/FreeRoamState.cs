@@ -21,6 +21,16 @@ public class FreeRoamState : IGameState
     public void HandleUpdate()
     {
         playerController.HandleUpdate();
+
+
+        if (Input.GetKeyDown(KeyCode.F5)) 
+        {
+            SavingSystem.i.Save("save");
+        }
+        if (Input.GetKeyDown(KeyCode.F6)) 
+        {
+            SavingSystem.i.Load("save");
+        }
     }
 
     public void Exit()
